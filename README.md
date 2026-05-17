@@ -128,13 +128,14 @@ Admins manage the system's global state and maintain total compliance.
 
 To experience the full capability of the GoalDex workflow, follow this step-by-step walkthrough:
 
-### Phase 1: The Employee Sets & Submits Goals
+### Phase 1: Interactive Goal Alignment & Validation (The "Aha!" Moment)
 1. Log in as **Employee** (`employee@goaldex.com` / `goaldex123`).
-2. Go to **My Goals**. Notice the weightage is currently at **100%** using the seeded goals, and the "Submit for Approval" button is unlocked.
-3. Click **Create Goal** and add a new goal (e.g., weightage: `20%`).
-4. Look at the top bar. It will turn yellow, say **`⚠️ Over by 20%`**, and the "Submit for Approval" button will **automatically disable**.
-5. Edit or delete goals until your total weightage drops back down to exactly **`100%`**. The indicator turns green, and the button unlocks!
-6. Click **Submit for Approval**. Your sheet status changes to `Pending Approval`, and the edit/delete options instantly **lock**.
+2. Go to **My Goals**. You will see the sheet starts in **`Draft`** status with pre-seeded goals adding up to exactly **`100%`**, and the "Submit for Approval" button is unlocked.
+3. **Trigger the Validation Warning**: Click **Edit** (the pencil icon) on one of the goals and reduce its weightage by **`10%`** (e.g., change a 30% goal to 20%).
+4. **Watch the live feedback**: The total weightage indicator drops to **`90% / 100%`**, the warning banner warns you that it is under 100%, and the "Submit for Approval" button instantly **disables itself**!
+5. **Add a New Goal**: Click **Add Goal** and create a new custom goal with exactly **`10%`** weightage.
+6. **Watch the unlock**: The instant your new goal is saved, the total weightage reaches exactly **`100%`**, the indicator turns green, and the "Submit for Approval" button instantly **lights up and enables**!
+7. **Submit & Instant Lock**: Click **Submit for Approval**. Your sheet status changes to **`submitted`**, and the entire page instantly secure-locks itself—the "Add Goal" button, "Edit", and "Delete" actions disappear, preventing any further employee edits while the manager is reviewing!
 
 ### Phase 2: The Manager Reviews & Approves
 1. Log in as **Manager** (`manager@goaldex.com` / `goaldex123`).
