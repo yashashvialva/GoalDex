@@ -97,7 +97,7 @@ export async function createGoal(goalSheetId: string, values: GoalFormValues) {
     .single();
 
   if (sheet?.locked) throw new Error('Goal sheet is locked. Cannot add goals.');
-  if (sheet?.status === 'approved') throw new Error('Goal sheet is approved. Cannot modify.');
+  if (sheet?.status === 'approved' || sheet?.status === 'submitted') throw new Error('Goal sheet is locked. Cannot modify.');
 
   // Check max 8 goals
   const { count } = await supabase
@@ -158,7 +158,7 @@ export async function updateGoal(goalId: string, values: Partial<GoalFormValues>
 
   const sheet = (existing as any).goal_sheets;
   if (sheet.locked) throw new Error('Goal sheet is locked.');
-  if (sheet.status === 'approved') throw new Error('Cannot edit approved goals.');
+  if (sheet.status === 'approved' || sheet.status === 'submitted') throw new Error('Goal sheet is locked. Cannot edit.');
 
   // Shared goal check: only weightage editable
   if (existing.is_shared_goal) {
@@ -205,11 +205,16 @@ export async function deleteGoal(goalId: string) {
 
   const { data: goal } = await supabase
     .from('goals')
-    .select('goal_sheet_id, title')
+    .select('goal_sheet_id, title, goal_sheets!inner(locked, status)')
     .eq('id', goalId)
     .single();
 
   if (!goal) throw new Error('Goal not found');
+
+  const sheet = (goal as any).goal_sheets;
+  if (sheet?.locked || sheet?.status === 'approved' || sheet?.status === 'submitted') {
+    throw new Error('Goal sheet is locked. Cannot delete goals.');
+  }
 
   const { error } = await supabase.from('goals').delete().eq('id', goalId);
   if (error) throw new Error(error.message);

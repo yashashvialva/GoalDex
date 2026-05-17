@@ -60,7 +60,7 @@ export default function EmployeeGoalsPage() {
   useEffect(() => { fetchData(); }, [fetchData]);
 
   const totalW = goals.reduce((s, g) => s + g.weightage, 0);
-  const isLocked = goalSheet?.locked || goalSheet?.status === 'approved';
+  const isLocked = goalSheet?.locked || goalSheet?.status === 'approved' || goalSheet?.status === 'submitted';
 
   const handleSubmit = async () => {
     if (!goalSheet) return;
