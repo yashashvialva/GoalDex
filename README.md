@@ -2,6 +2,18 @@
 
 GoalDex is a next-generation, high-performance OKR (Objectives and Key Results) and employee performance management platform built for modern, forward-thinking enterprises. 
 
+> [!IMPORTANT]
+> ### ⚡ Live Demo & Credentials
+> **Live URL**: [https://goaldex.vercel.app](https://goaldex.vercel.app)
+> 
+> You can log in using these pre-seeded hackathon accounts (or use the convenient **"Quick Login"** buttons on the live login page!):
+> 
+> | Role | Email | Password | Demo Persona |
+> | :--- | :--- | :--- | :--- |
+> | **Employee** | `employee@goaldex.com` | `goaldex123` | *Arjun Mehta (Engineering)* |
+> | **Manager** | `manager@goaldex.com` | `goaldex123` | *Priya Sharma (Engineering Lead)* |
+> | **Admin** | `admin@goaldex.com` | `goaldex123` | *Rahul Verma (Global HR Admin)* |
+
 Traditional corporate HR tools are notorious for being slow, boring, spreadsheet-heavy, and confusing. **GoalDex completely reimagines this experience.** It combines a stunning **sci-fi cyberpunk visual aesthetic** with an ironclad **role-based workflow system** (Employee ➔ Manager ➔ Admin) and a precise **mathematical scoring engine** to make performance management engaging, transparent, and rock-solid.
 
 ---
