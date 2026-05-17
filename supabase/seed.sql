@@ -112,10 +112,10 @@ BEGIN
   ON CONFLICT (id) DO NOTHING;
 
   -- ============================================================
-  -- GOAL SHEETS for demo employee
+  -- GOAL SHEETS for demo employee (Starts in Draft for Interactive Demo)
   -- ============================================================
   INSERT INTO public.goal_sheets (id, employee_id, cycle_year, status, total_weightage, locked, submitted_at, approved_at) VALUES
-    (v_gs1, v_employee_id, 2026, 'approved', 100, TRUE, '2026-04-10', '2026-04-15')
+    (v_gs1, v_employee_id, 2026, 'draft', 100, FALSE, NULL, NULL)
   ON CONFLICT (employee_id, cycle_year) DO NOTHING;
 
   -- Goal sheets for other employees
