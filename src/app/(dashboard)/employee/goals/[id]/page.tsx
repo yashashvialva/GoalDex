@@ -34,25 +34,37 @@ export default function EditGoalPage() {
 
   const { control, handleSubmit, reset, formState: { errors } } = useForm<GoalFormValues>({
     resolver: zodResolver(goalSchema),
+    defaultValues: {
+      title: '', description: '', thrust_area: '',
+      uom_type: 'numeric', target_value: 0, weightage: 10,
+      is_shared_goal: false,
+    }
   });
 
   useEffect(() => {
     const fetch = async () => {
-      const supabase = createClient();
-      const { data } = await supabase.from('goals').select('*').eq('id', goalId).single();
-      if (data) {
-        reset({
-          title: data.title, description: data.description,
-          thrust_area: data.thrust_area, uom_type: data.uom_type as any,
-          target_value: Number(data.target_value), weightage: data.weightage,
-          is_shared_goal: data.is_shared_goal,
-        });
-        setIsShared(data.is_shared_goal);
+      try {
+        const supabase = createClient();
+        const { data, error } = await supabase.from('goals').select('*').eq('id', goalId).single();
+        if (error) throw error;
+        if (data) {
+          reset({
+            title: data.title, description: data.description,
+            thrust_area: data.thrust_area, uom_type: data.uom_type as any,
+            target_value: Number(data.target_value), weightage: data.weightage,
+            is_shared_goal: data.is_shared_goal,
+          });
+          setIsShared(data.is_shared_goal);
+        }
+      } catch (err: any) {
+        console.error('Error fetching goal:', err);
+        enqueueSnackbar(err.message || 'Failed to load goal data', { variant: 'error' });
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
     };
     fetch();
-  }, [goalId, reset]);
+  }, [goalId, reset, enqueueSnackbar]);
 
   const onSubmit = async (values: GoalFormValues) => {
     setSaving(true);
