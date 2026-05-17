@@ -91,12 +91,7 @@ export default function LoginPage() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        background: `
-          radial-gradient(ellipse at 20% 50%, ${alpha('#6366f1', 0.15)} 0%, transparent 50%),
-          radial-gradient(ellipse at 80% 20%, ${alpha('#14b8a6', 0.1)} 0%, transparent 50%),
-          radial-gradient(ellipse at 50% 80%, ${alpha('#6366f1', 0.08)} 0%, transparent 50%),
-          linear-gradient(180deg, #0f0f1a 0%, #0a0a14 100%)
-        `,
+        background: 'transparent',
         p: 2,
       }}
     >

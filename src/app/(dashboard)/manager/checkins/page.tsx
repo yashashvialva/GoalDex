@@ -136,7 +136,7 @@ export default function ManagerCheckinsPage() {
                             )}
                             <Stack direction="row" spacing={1} sx={{ alignItems: 'flex-end' }}>
                               <TextField size="small" placeholder="Add feedback..." sx={{ flex: 1 }}
-                                value={comments[g.checkin.id] || g.checkin.manager_comment || ''}
+                                value={comments[g.checkin.id] !== undefined ? comments[g.checkin.id] : (g.checkin.manager_comment || '')}
                                 onChange={e => setComments(p => ({ ...p, [g.checkin!.id]: e.target.value }))} />
                               <Button size="small" variant="contained" startIcon={<Comment />}
                                 disabled={saving === g.checkin.id} onClick={() => handleComment(g.checkin!.id)}>
